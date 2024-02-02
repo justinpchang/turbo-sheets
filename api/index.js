@@ -69,13 +69,6 @@ app.post("/", async (req, res) => {
           return response.data;
         },
       },
-      getA1: async function () {
-        const response = await api.spreadsheets.values.get({
-          spreadsheetId,
-          range: "A1",
-        });
-        return response.data.values[0];
-      },
     },
   });
   vm.run(code);
