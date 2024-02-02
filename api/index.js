@@ -61,7 +61,7 @@ app.post("/", async (req, res) => {
           });
           return response.data;
         },
-        append: async function (...args) {
+        append: async function (args) {
           const response = await api.spreadsheets.values.append({
             ...args,
             spreadsheetId,
