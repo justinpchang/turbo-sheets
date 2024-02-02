@@ -10,6 +10,7 @@ The debugging client lives in `client/` directory. All it does is POST the sprea
 
 ### TODO
 
+- Add ability for top-level `async` by wrapping in IIFE
 - Add error reporting
 - Simplify interface functions?
 - Write full web-app with instructions
