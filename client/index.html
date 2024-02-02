@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Super Sheets</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      h1 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+      }
+			pre {
+				width: 100%;
+			}
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("submitButton")
+          .addEventListener("click", function () {
+						const spreadsheetId = document.getElementById("spreadsheetId").value;
+						const code = document.getElementById("code").value;
+            const url = "https://turbo-sheets-qgkzbscpga-uk.a.run.app";
+
+            fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ spreadsheetId, code }),
+            })
+              .then((response) => response.json())
+              .then((data) => {
+								console.log("Success:", data);
+								document.getElementById("response").innerText = JSON.stringify(data, null, 2);
+							})
+              .catch((error) => {
+                console.error("Error:", error);
+              });
+          });
+      });
+    </script>
+  </head>
+  <body>
+    <p>
+      <label for="spreadsheetId">Spreadsheet ID:</label>
+      <input
+        type="text"
+        id="spreadsheetId"
+        name="spreadsheetId"
+        placeholder="Spreadsheet ID"
+      />
+    </p>
+    <p>
+      <label for="code">Code</label>
+      <br />
+      <textarea id="code" name="code" rows="4" cols="50"></textarea><br />
+    </p>
+    <p>
+      <button id="submitButton">Submit</button>
+    </p>
+    <br />
+    <hr />
+    <br />
+		<p>
+			<pre id="response"></pre>
+		</p>
+  </body>
+</html>
